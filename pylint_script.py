@@ -1,5 +1,9 @@
 # pylint_script.py
 
+"""
+This script runs Pylint on Python files in the current directory.
+"""
+
 import subprocess
 import sys
 
