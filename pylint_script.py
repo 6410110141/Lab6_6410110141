@@ -1,17 +1,17 @@
 # pylint_script.py
 
-import os
 import subprocess
+import sys
 
 def run_pylint():
-    python_files = " ".join([file for file in os.listdir() if file.endswith(".py")])
-    pylint_command = f"pylint {python_files}"
-
+    """
+    Run Pylint on Python files in the current directory.
+    """
     try:
-        subprocess.run(pylint_command, shell=True, check=True)
+        subprocess.run(["pylint", "--load-plugins", "pylint.extensions.multiprocessing", "."], check=True)
     except subprocess.CalledProcessError as e:
         print(f"Error running pylint: {e}")
-        exit(1)
+        sys.exit(1)
 
 if __name__ == "__main__":
     run_pylint()
